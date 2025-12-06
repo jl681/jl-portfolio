@@ -1,65 +1,60 @@
-import Image from "next/image";
+import { Github, Linkedin, Mail } from 'lucide-react'
+import Link from 'next/link'
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="space-y-24 md:space-y-32">
+
+      {/* --- HERO SECTION --- */}
+      <section className="space-y-8 animate-fade-in">
+        <nav className="flex justify-between items-center text-sm font-medium text-gray-500 mb-16">
+          <span className="text-gray-900 font-bold">Alex Dev.</span>
+          <div className="flex gap-6">
+            {/* UPDATED LINK: Now points to /work instead of #work */}
+            <Link href="/work" className="hover:text-black transition-colors">Work</Link>
+            <Link href="/blog" className="hover:text-black transition-colors">Writing</Link>
+            <Link href="/experience" className="hover:text-black transition-colors">Experience</Link>
+          </div>
+        </nav>
+
+        <div className="max-w-2xl space-y-6">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-gray-900">
+            Software Engineer building accessible digital products.
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-lg text-gray-600 leading-relaxed max-w-lg">
+            I specialize in React, Next.js, and TypeScript. Currently focused on building performant web applications with clean, gallery-like aesthetics.
           </p>
+
+          <div className="flex gap-4 pt-2">
+            <a
+              href="https://github.com"
+              target="_blank"
+              className="flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-all text-sm font-medium"
+            >
+              <Github size={18} />
+              GitHub
+            </a>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              className="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-lg hover:border-gray-400 transition-all text-sm font-medium"
+            >
+              <Linkedin size={18} />
+              LinkedIn
+            </a>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </section>
+
+      {/* --- FOOTER --- */}
+      <footer className="pt-10 pb-10 text-sm text-gray-400 flex justify-between items-center">
+        <p>© 2024 Alex. All rights reserved.</p>
+        <a href="mailto:alex@example.com" className="flex items-center gap-2 hover:text-gray-900 transition-colors">
+          <Mail size={16} />
+          Get in touch
+        </a>
+      </footer>
+
     </div>
-  );
+  )
 }
