@@ -8,7 +8,7 @@ export default function Home() {
       {/* --- HERO SECTION --- */}
       <section className="space-y-8 animate-fade-in">
         <nav className="flex justify-between items-center text-sm font-medium text-gray-500 mb-16">
-          <span className="text-gray-900 font-bold">Alex Dev.</span>
+          <span className="text-gray-900 font-bold">JL Dev.</span>
           <div className="flex gap-6">
             {/* UPDATED LINK: Now points to /work instead of #work */}
             <Link href="/work" className="hover:text-black transition-colors">Work</Link>
@@ -27,7 +27,7 @@ export default function Home() {
 
           <div className="flex gap-4 pt-2">
             <a
-              href="https://github.com"
+              href="https://github.com/jl681"
               target="_blank"
               className="flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-all text-sm font-medium"
             >
@@ -35,7 +35,7 @@ export default function Home() {
               GitHub
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/jing-li-9a74652a7/"
               target="_blank"
               className="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-lg hover:border-gray-400 transition-all text-sm font-medium"
             >
@@ -48,8 +48,8 @@ export default function Home() {
 
       {/* --- FOOTER --- */}
       <footer className="pt-10 pb-10 text-sm text-gray-400 flex justify-between items-center">
-        <p>© 2024 Alex. All rights reserved.</p>
-        <a href="mailto:alex@example.com" className="flex items-center gap-2 hover:text-gray-900 transition-colors">
+        <p>© 2024 JL. All rights reserved.</p>
+        <a href="mailto:jljanice23@gmail.com" className="flex items-center gap-2 hover:text-gray-900 transition-colors">
           <Mail size={16} />
           Get in touch
         </a>
