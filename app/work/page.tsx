@@ -26,7 +26,7 @@ export default function WorkPage() {
 
                 {/* Project Card 1 */}
                 <div className="group space-y-4 cursor-pointer">
-                    <div className="aspect-[4/3] bg-gray-100 rounded-xl overflow-hidden relative border border-gray-100">
+                    <div className="aspect-4/3 bg-gray-100 rounded-xl overflow-hidden relative border border-gray-100">
                         {/* Placeholder for Image */}
                         <div className="w-full h-full bg-gray-100 group-hover:bg-gray-200 transition-colors flex items-center justify-center text-gray-400">
                             Project Image
@@ -43,7 +43,7 @@ export default function WorkPage() {
 
                 {/* Project Card 2 */}
                 <div className="group space-y-4 cursor-pointer">
-                    <div className="aspect-[4/3] bg-gray-100 rounded-xl overflow-hidden relative border border-gray-100">
+                    <div className="aspect-4/3 bg-gray-100 rounded-xl overflow-hidden relative border border-gray-100">
                         <div className="w-full h-full bg-gray-100 group-hover:bg-gray-200 transition-colors flex items-center justify-center text-gray-400">
                             Project Image
                         </div>
@@ -59,7 +59,7 @@ export default function WorkPage() {
 
                 {/* Project Card 3 (Example of adding more) */}
                 <div className="group space-y-4 cursor-pointer">
-                    <div className="aspect-[4/3] bg-gray-100 rounded-xl overflow-hidden relative border border-gray-100">
+                    <div className="aspect-4/3 bg-gray-100 rounded-xl overflow-hidden relative border border-gray-100">
                         <div className="w-full h-full bg-gray-100 group-hover:bg-gray-200 transition-colors flex items-center justify-center text-gray-400">
                             Project Image
                         </div>
