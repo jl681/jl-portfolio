@@ -2,7 +2,6 @@ import { getAllPostSlugs, getPostBySlug } from "@/lib/posts";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal } from "react";
 
 interface PageProps {
     params: Promise<{ slug: string }>;
@@ -53,7 +52,9 @@ export default async function WorkPage({ params }: PageProps) {
                         <time>{post.date}</time>
                         <span>•</span>
                         <div className="flex gap-2">
-                            {post.tags.map((tag: boolean | Key | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined) => <span key={tag}>#{tag}</span>)}
+                            {(post.tags as string[]).map((tag) => (
+                                <span key={tag}>#{tag}</span>
+                            ))}
                         </div>
                     </div>
                 </header>
