@@ -1,28 +1,43 @@
-# Personal Portfolio & Digital Garden
+# Digital Garden & Engineering Portfolio
 
-A minimalist, high-performance personal website built to showcase my projects, professional experience, and writing. Designed with a "Swiss Style" aesthetic, focusing on typography, whitespace, and accessibility.
+A "Show Your Work" style personal website tailored for a Backend/Cloud Engineer.
+This project moves beyond the traditional static portfolio by implementing Austin Kleon's **"Stock and Flow"** philosophy—combining a live engineering log with curated architectural case studies.
+
+Built with performance and maintainability in mind, using the latest 2025 web standards.
 
 ![Project Preview](public/project-preview.png)
 
+## 🧠 Design Philosophy: Stock & Flow
+
+This site is architected around two distinct types of content:
+
+1.  **The Flow (System Log):** A chronological stream of daily learnings, debugging notes, and raw ideas. It serves as a "Server Log" of my engineering life.
+    - _Visual Style:_ Terminal/Console aesthetic, Monospaced fonts.
+    - _Location:_ Homepage Feed & `/log`
+2.  **The Stock (Selected Artifacts):** Durable, polished content. These are deep dives into system design, architecture decisions, and complex problem-solving.
+    - _Visual Style:_ Blueprint/Documentation aesthetic, Gallery layout.
+    - _Location:_ `/work`
+
 ## 🚀 Tech Stack
 
-This project uses the latest modern web technologies (Late 2025 Standard):
-
-- **Framework:** [Next.js 15](https://nextjs.org/) (App Router)
+- **Framework:** [Next.js 15](https://nextjs.org/) (App Router, Server Components)
 - **Language:** [TypeScript](https://www.typescriptlang.org/)
-- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/) (No config file, CSS-first configuration)
-- **Content:** Markdown (processed via `remark` & `gray-matter`)
-- **Typography:** `Geist` & `Inter` (Optimized via `next/font`)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/) (CSS-first configuration, no `tailwind.config.js`)
+- **Content:** Markdown-based CMS (Local Files)
+  - `remark` & `rehype` for HTML processing
+  - `gray-matter` for metadata parsing
+  - Syntax Highlighting for code blocks
+- **Typography:** `Geist Sans` (Narrative) & `Geist Mono` (Data/Logs)
 - **Icons:** [Lucide React](https://lucide.dev/)
 - **Deployment:** Vercel
 
-## ✨ Features
+## ✨ Key Features
 
-- **Minimalist Design:** Clean, gallery-style layout with high-contrast typography.
-- **Static Blog Engine:** Writes posts in Markdown (`.md`), renders as static HTML at build time.
-- **Performance:** 100/100 Lighthouse score, fully responsive, and accessible.
-- **Experience Timeline:** specialized layout for CV/Resume history.
-- **Typography Plugin:** Beautifully formatted long-form writing using Tailwind Typography.
+- **Dual-Stream Architecture:** File-system based routing that separates ephemeral "Logs" from permanent "Works".
+- **Zero-Config Tailwind v4:** Leveraging the new CSS-first configuration approach.
+- **Semantic HTML:** Fully accessible `<footer>`, `<article>`, and `<section>` tags.
+- **Performance First:** 100/100 Lighthouse score, static generation for content pages.
+- **Developer UX:** Write content in Markdown, commit to Git, auto-deploy.
 
 ## 🛠️ Getting Started
 
@@ -36,7 +51,7 @@ This project uses the latest modern web technologies (Late 2025 Standard):
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/jl681/jl-portfolio.git
+   git clone [https://github.com/jl681/jl-portfolio.git](https://github.com/jl681/jl-portfolio.git)
    cd jl-portfolio
    ```
 
@@ -44,65 +59,31 @@ This project uses the latest modern web technologies (Late 2025 Standard):
 
    ```bash
    npm install
+
    ```
 
 3. **Run the development server**
-
    ```bash
    npm run dev
    ```
-
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+4. Open [http://localhost:3000](https://www.google.com/search?q=http://localhost:3000) in your browser.
 
 ## 📂 Project Structure
 
 ```bash
-├── app/                  # App Router pages
-│   ├── blog/             # Blog listing & dynamic [slug] pages
-│   ├── experience/       # Resume/Timeline page
-│   ├── work/             # Project gallery
-│   ├── globals.css       # Main CSS (Tailwind v4 Setup)
-│   └── page.tsx          # Homepage
+├── app/
+│   ├── log/              # [Flow] Dynamic pages for daily logs
+│   ├── work/             # [Stock] Dynamic pages for case studies
+│   └── page.tsx          # Homepage (Combines Stream & Featured Work)
+├── components/           # UI Components (NowStream, FeaturedWork, PortfolioCard)
+articles
 ├── lib/
-│   └── posts.ts          # Logic to parse Markdown files
-├── posts/                # Local storage for blog content (.md files)
-└── public/               # Static assets (images, icons)
+│   └── posts.ts       # Data fetching & processing logic
+└── public/               # Static assets
+
 ```
-
-## 📝 Writing a New Blog Post
-
-1. Create a new file in the `posts/` folder (e.g., `my-new-post.md`).
-2. Add the required Frontmatter at the top:
-
-```markdown
----
-title: "My New Post Title"
-date: "2025-12-06"
-excerpt: "A short description that appears on the blog index page."
----
-
-# Introduction
-
-Write your content here using standard Markdown...
-```
-
-3. Save the file. The site will automatically detect the new post (no restart required in Dev mode).
-
-## 🎨 Tailwind v4 Note
-
-This project uses **Tailwind CSS v4**.
-
-- There is **no** `tailwind.config.ts`.
-- Plugins (like `@tailwindcss/typography`) and theme variables are configured directly in `app/globals.css`.
 
 ## 🚢 Deployment
 
-This site is optimized for deployment on **Vercel**.
-
-1. Push code to GitHub.
-2. Import project to Vercel.
-3. Vercel automatically detects the Next.js framework and deploys.
-
----
-
-© [2025] [JL]. All rights reserved.
+This site is optimized for **Vercel**.
+Simply push to `main`, and Vercel will detect the Next.js framework and build the static pages automatically.
