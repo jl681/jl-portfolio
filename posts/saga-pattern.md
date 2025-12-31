@@ -1,7 +1,12 @@
 ---
-title: "Saga Pattern in Microservices — A Real-World Case Study"
-date: "2025-04-21"
-excerpt: "Insights and lessons learned from implementing the Saga Pattern in a real-world microservices scenario with GDPR compliance requirements."
+title: 'Saga Pattern in Microservices — A Real-World Case Study'
+date: '2025-04-21'
+description: 'Insights and lessons learned from implementing the Saga Pattern in microservices, including orchestration, compensation, and resilience patterns.'
+category: 'microservices'
+tags:
+  - saga
+  - microservices
+  - distributed-systems
 ---
 
 ## What This Blog Answers

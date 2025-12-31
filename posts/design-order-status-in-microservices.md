@@ -1,7 +1,12 @@
 ---
-title: "Order Status Design in Microservices: Tips & Tricks"
-excerpt: "Designing order workflows in microservices can get messy with over 20 statuses to manage. "
-date: "2025-04-22"
+title: 'Order Status Design in Microservices: Tips & Tricks'
+description: 'Designing order workflows in microservices can get messy with many statuses; this post covers patterns for status handling, history, and handler decomposition.'
+date: '2025-04-22'
+category: 'microservices'
+tags:
+  - orders
+  - microservices
+  - design
 ---
 
 When I started designing the order workflow for a microservice system, I quickly ran into problems. Orders in our system can transition through more than 20 statuses — from `ORDER_CREATED` to `PAID`, `SHIPPED`, `CANCELLED`, and beyond.

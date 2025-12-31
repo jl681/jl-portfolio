@@ -1,7 +1,12 @@
 ---
-title: "How to Connect to a Private EKS Cluster"
-date: "2025-09-18"
-excerpt: "Authenticate via your IdP, assume an AWS role for temporary creds, create an SSM port-forwarded tunnel to a bastion host, and configure kubectl to talk to your private EKS endpoint."
+title: 'How to Connect to a Private EKS Cluster'
+date: '2025-09-18'
+description: 'Authenticate via corporate IdP, assume an AWS role, start an SSM port-forwarded tunnel to a bastion host, and configure kubectl for private EKS access.'
+category: 'cloud'
+tags:
+  - aws
+  - eks
+  - kubectl
 ---
 
 This document outlines the step-by-step process of establishing a secure connection from your local machine to an **AWS Elastic Kubernetes Service (EKS)** cluster residing within a private network.

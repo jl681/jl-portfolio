@@ -1,6 +1,13 @@
 ---
-title: "Securely Connecting to Private EKS and RDS Clusters in AWS"
-date: "2025-04-28"
+title: 'Securely Connecting to Private EKS and RDS Clusters in AWS'
+date: '2025-04-28'
+description: 'Step-by-step guidance for securely accessing private EKS and RDS clusters via bastion hosts and SSM port forwarding.'
+category: 'cloud'
+tags:
+  - aws
+  - eks
+  - rds
+  - bastion
 ---
 
 ## What This Blog Answers

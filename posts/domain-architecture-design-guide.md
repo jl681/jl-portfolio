@@ -1,7 +1,12 @@
 ---
-title: "Domain Architecture Design Guide"
-excerpt: "DDD and Hexagonal Architecture"
-date: "2025-05-21"
+title: 'Domain Architecture Design Guide'
+description: 'DDD and Hexagonal Architecture — guidance on domain modeling, ports & adapters, and organizing application layers for maintainable services.'
+date: '2025-05-21'
+category: 'architecture'
+tags:
+  - 'ddd'
+  - 'hexagonal'
+  - 'architecture'
 ---
 
 ## 📘 Overview

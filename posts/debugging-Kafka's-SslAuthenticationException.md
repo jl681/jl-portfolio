@@ -1,7 +1,12 @@
 ---
 title: "Debugging Kafka's SslAuthenticationException"
-except: "Kafka SSL"
-date: "2025-06-01"
+description: "Debugging steps and root causes for Kafka's SslAuthenticationException, including keystore/truststore checks and certificate validation guidance."
+date: '2025-06-01'
+category: 'kafka'
+tags:
+  - kafka
+  - ssl
+  - security
 ---
 
 While configuring mutual TLS (mTLS) for a Kafka deployment, I encountered this error:

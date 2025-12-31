@@ -38,7 +38,7 @@ export default function Header() {
                     <span className="hidden sm:inline-block">Dev</span>
                 </Link>
 
-                {/* Desktop Navigation */}
+
                 <nav className="flex items-center gap-6">
                     {NAV_ITEMS.map((item) => (
                         <Link

@@ -33,7 +33,6 @@ export function getFeaturedWork() {
         };
     });
 
-    // Sort by date descending
     return posts.sort((a, b) => (a.date > b.date ? -1 : 1));
 }
 

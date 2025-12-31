@@ -1,7 +1,12 @@
 ---
 title: 'A Concise Guide to the AWS EKS Ecosystem'
 date: '2025-09-18'
-excerpt: 'Fundamental AWS concepts, the EKS two-plane model, security/VPC best practices, and recommended environment separation for stable operations.'
+description: 'Fundamental AWS concepts, the EKS two-plane model, security/VPC best practices, and recommended environment separation for stable operations.'
+category: 'cloud'
+tags:
+  - aws
+  - eks
+  - kubernetes
 ---
 
 This document provides a clear, bullet-point-based overview of the fundamental concepts and best practices for deploying applications on AWS Elastic Kubernetes Service (EKS).

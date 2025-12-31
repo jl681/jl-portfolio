@@ -1,6 +1,12 @@
 ---
-title: "Search API Optimization"
-date: "2025-04-24"
+title: 'Search API Optimization'
+date: '2025-04-24'
+description: 'Techniques for optimizing complex search APIs: joins, full-text search with GIN, pagination strategies, and native queries.'
+category: 'database'
+tags:
+  - sql
+  - postgres
+  - performance
 ---
 
 ## 1. Problem Context

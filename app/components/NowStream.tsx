@@ -15,7 +15,6 @@ export default async function NowStream() {
         <section className="py-24 border-b border-gray-100 dark:border-gray-900">
             <div className="container mx-auto px-6 max-w-3xl">
 
-                {/* Header: Aligned Flush Left */}
                 <div className="mb-12 flex items-baseline justify-between">
                     <h2 className="font-geist text-3xl font-bold tracking-tight text-black dark:text-white">
                         System Log
@@ -27,8 +26,6 @@ export default async function NowStream() {
                         View Full History →
                     </Link>
                 </div>
-
-                {/* Timeline Container */}
                 <div className="relative border-l border-gray-200 ml-3 space-y-8 dark:border-gray-800">
                     {logs.map((log) => {
                         const slug = log.id.replace(/\.md$/, "");
@@ -37,7 +34,7 @@ export default async function NowStream() {
                             <div key={log.id} className="relative pl-8 group cursor-pointer">
 
                                 {/* 1. The Dot (Centered perfectly on the line) */}
-                                <div className="absolute -left-[16px] top-1 flex h-8 w-8 items-center justify-center rounded-full border border-gray-100 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900 transition-transform group-hover:scale-110">
+                                <div className="absolute -left-4 top-1 flex h-8 w-8 items-center justify-center rounded-full border border-gray-100 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900 transition-transform group-hover:scale-110">
                                     {ICON_MAP[log.type] || <HelpCircle className="size-3.5 text-gray-400" />}
                                 </div>
 
@@ -68,13 +65,11 @@ export default async function NowStream() {
                         );
                     })}
 
-                    {/* End Marker */}
                     <div className="pl-8 pt-4">
                         <span className="text-xs font-mono italic text-gray-400">End of recent logs...</span>
                     </div>
                 </div>
 
-                {/* Mobile View All Link */}
                 <div className="mt-8 sm:hidden">
                     <Link
                         href="/log"

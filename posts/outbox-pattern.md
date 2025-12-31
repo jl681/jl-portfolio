@@ -1,6 +1,12 @@
 ---
-title: "The OutBox Pattern "
-date: "2025-09-29"
+title: 'The OutBox Pattern '
+date: '2025-09-29'
+description: 'Explanation and implementation patterns for the Outbox Pattern to reliably publish events in microservices (polling vs CDC approaches).'
+category: 'microservices'
+tags:
+  - outbox
+  - cdc
+  - messaging
 ---
 
 ## 1. Why Use the Outbox Pattern?

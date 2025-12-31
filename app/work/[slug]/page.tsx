@@ -58,11 +58,6 @@ export default async function WorkPage({ params }: PageProps) {
                         </div>
                     </div>
                 </header>
-
-                {/* Main Content 
-          'prose' comes from @tailwindcss/typography plugin.
-          It automatically styles the raw HTML from markdown.
-        */}
                 <div
                     className="
             prose prose-lg max-w-none dark:prose-invert
