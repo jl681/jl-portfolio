@@ -29,8 +29,7 @@ export function getFeaturedWork() {
             category: data.category,
             description: data.description,
             date: data.date,
-            tags: data.tags || [],
-            // We don't return 'content' here to keep the payload small for the homepage
+            tags: (data.tags as string[]) || [],
         };
     });
 
@@ -50,7 +49,7 @@ export async function getPostBySlug(slug: string) {
     const fileContents = fs.readFileSync(fullPath, "utf8");
     const { data, content } = matter(fileContents);
 
-    // Convert markdown to HTML (using remark)
+
     const processedContent = await remark().use(html).process(content);
     const contentHtml = processedContent.toString();
 
@@ -59,8 +58,8 @@ export async function getPostBySlug(slug: string) {
         title: data.title,
         date: data.date,
         category: data.category,
-        tags: data.tags || [],
-        contentHtml, // The rendered HTML
+        tags: (data.tags as string[]) || [],
+        contentHtml,
     };
 }
 
@@ -101,7 +100,6 @@ export async function getLogBySlug(slug: string) {
     const fileContents = fs.readFileSync(fullPath, "utf8");
     const { data, content } = matter(fileContents);
 
-    // Convert markdown to HTML
     const processedContent = await remark()
         .use(html)
         .process(content);
@@ -115,7 +113,6 @@ export async function getLogBySlug(slug: string) {
     };
 }
 
-// ✅ NEW: Get all log slugs (for static generation)
 export function getAllLogSlugs() {
     if (!fs.existsSync(STREAM_DIR)) return [];
     const files = fs.readdirSync(STREAM_DIR);
