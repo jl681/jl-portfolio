@@ -1,61 +1,123 @@
-import fs from 'fs';
-import matter from 'gray-matter';
-import path from 'path';
-import { remark } from 'remark';
-import html from 'remark-html';
+import matter from "gray-matter";
+import fs from "node:fs";
+import path from "node:path";
+import { remark } from "remark";
+import html from "remark-html";
 
-const postsDirectory = path.join(process.cwd(), 'posts');
+const WORK_DIR = path.join(process.cwd(), "posts");
+const STREAM_DIR = path.join(process.cwd(), "stream");
 
-export function getSortedPostsData() {
-    // Get file names under /posts
-    const fileNames = fs.readdirSync(postsDirectory);
 
-    const allPostsData = fileNames.map((fileName) => {
-        // Remove ".md" from file name to get slug
-        const slug = fileName.replace(/\.md$/, '');
 
-        // Read markdown file as string
-        const fullPath = path.join(postsDirectory, fileName);
-        const fileContents = fs.readFileSync(fullPath, 'utf8');
+function getMarkdownFiles(directory: string) {
+    if (!fs.existsSync(directory)) return [];
+    return fs.readdirSync(directory).filter((file) => file.endsWith(".md"));
+}
 
-        // Use gray-matter to parse the post metadata section
-        const matterResult = matter(fileContents);
+export function getFeaturedWork() {
+    const files = getMarkdownFiles(WORK_DIR);
 
-        // Combine the data with the id
+    const posts = files.map((fileName) => {
+        const slug = fileName.replace(/\.md$/, "");
+        const fullPath = path.join(WORK_DIR, fileName);
+        const fileContents = fs.readFileSync(fullPath, "utf8");
+        const { data } = matter(fileContents);
+
         return {
             slug,
-            ...(matterResult.data as { date: string; title: string; excerpt: string }),
+            title: data.title,
+            category: data.category,
+            description: data.description,
+            date: data.date,
+            tags: data.tags || [],
+            // We don't return 'content' here to keep the payload small for the homepage
         };
     });
 
-    // Sort posts by date
-    return allPostsData.sort((a, b) => {
-        if (a.date < b.date) {
-            return 1;
-        } else {
-            return -1;
-        }
-    });
+    // Sort by date descending
+    return posts.sort((a, b) => (a.date > b.date ? -1 : 1));
 }
 
-// Ensure this function is async now
-export async function getPostData(slug: string) {
-    const fullPath = path.join(postsDirectory, `${slug}.md`);
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
 
-    // Use gray-matter to parse the post metadata section
-    const matterResult = matter(fileContents);
+export async function getPostBySlug(slug: string) {
+    const realSlug = slug.replace(/\.md$/, "");
+    const fullPath = path.join(WORK_DIR, `${realSlug}.md`);
 
-    // Use remark to convert markdown into HTML string
-    const processedContent = await remark()
-        .use(html)
-        .process(matterResult.content);
+    if (!fs.existsSync(fullPath)) {
+        return null;
+    }
 
+    const fileContents = fs.readFileSync(fullPath, "utf8");
+    const { data, content } = matter(fileContents);
+
+    // Convert markdown to HTML (using remark)
+    const processedContent = await remark().use(html).process(content);
     const contentHtml = processedContent.toString();
 
     return {
-        slug,
-        contentHtml,
-        ...(matterResult.data as { date: string; title: string; }),
+        slug: realSlug,
+        title: data.title,
+        date: data.date,
+        category: data.category,
+        tags: data.tags || [],
+        contentHtml, // The rendered HTML
     };
+}
+
+export function getAllPostSlugs() {
+    const files = fs.readdirSync(WORK_DIR);
+    console.log("====" + files.length)
+    return files.map((file) => file.replace(/\.md$/, ""));
+}
+
+export function getNowStream() {
+    const files = getMarkdownFiles(STREAM_DIR);
+
+    const logs = files.map((fileName) => {
+        const fullPath = path.join(STREAM_DIR, fileName);
+        const fileContents = fs.readFileSync(fullPath, "utf8");
+        const { data, content } = matter(fileContents);
+
+        return {
+            id: fileName,
+            date: data.date,
+            type: data.type || "life", // coding | reading | life
+            content: content.trim(),
+        };
+    });
+
+    return logs.sort((a, b) => (new Date(a.date).getTime() > new Date(b.date).getTime() ? -1 : 1));
+}
+
+
+export async function getLogBySlug(slug: string) {
+    const realSlug = slug.replace(/\.md$/, "");
+    const fullPath = path.join(STREAM_DIR, `${realSlug}.md`);
+
+    if (!fs.existsSync(fullPath)) {
+        return null;
+    }
+
+    const fileContents = fs.readFileSync(fullPath, "utf8");
+    const { data, content } = matter(fileContents);
+
+    // Convert markdown to HTML
+    const processedContent = await remark()
+        .use(html)
+        .process(content);
+
+    return {
+        slug: realSlug,
+        date: data.date,
+        type: data.type || "life",
+        title: data.title || "Log Entry", // Fallback title
+        contentHtml: processedContent.toString(),
+    };
+}
+
+// ✅ NEW: Get all log slugs (for static generation)
+export function getAllLogSlugs() {
+    if (!fs.existsSync(STREAM_DIR)) return [];
+    const files = fs.readdirSync(STREAM_DIR);
+    return files.map((file) => file.replace(/\.md$/, ""));
 }

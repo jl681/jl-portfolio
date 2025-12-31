@@ -1,79 +1,58 @@
-import { ArrowLeft, ArrowUpRight } from 'lucide-react'
-import Link from 'next/link'
 
-export default function WorkPage() {
+import { getFeaturedWork } from "@/lib/posts";
+import { ArrowLeft, BookOpen } from "lucide-react";
+import Link from "next/link";
+import { PortfolioCard } from "../components/PortfolioCard";
+
+function getIconForCategory(category: string) {
+    return <BookOpen className="size-5" />
+    // const lowerCat = category.toLowerCase();
+    // if (lowerCat.includes("system") || lowerCat.includes("backend")) return <Terminal className="size-5" />;
+    // if (lowerCat.includes("learning") || lowerCat.includes("note")) return <BookOpen className="size-5" />;
+    // if (lowerCat.includes("architecture") || lowerCat.includes("cloud")) return <GitCommit className="size-5" />;
+    // return <LayoutTemplate className="size-5" />;
+}
+
+export default async function WorkArchivePage() {
+    const works = getFeaturedWork(); // ✅ GET ALL ITEMS
+
     return (
-        <div className="space-y-16 animate-fade-in">
+        <div className="min-h-screen bg-white py-24 dark:bg-black dark:text-white">
+            <div className="container mx-auto px-6 max-w-3xl">
 
-            {/* Navigation: Back to Home */}
-            <nav>
-                <Link href="/" className="inline-flex items-center gap-2 text-gray-500 hover:text-black transition-colors text-sm font-medium">
-                    <ArrowLeft size={16} />
-                    Back to Home
-                </Link>
-            </nav>
+                <div className="mb-12">
+                    <Link
+                        href="/"
+                        className="group inline-flex items-center text-sm font-medium text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white mb-8"
+                    >
+                        <ArrowLeft className="mr-2 size-4 transition-transform group-hover:-translate-x-1" />
+                        Back Home
+                    </Link>
 
-            {/* Header */}
-            <div className="space-y-4">
-                <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900">Selected Work.</h1>
-                <p className="text-gray-500 max-w-lg text-lg">
-                    A collection of projects exploring performance, accessibility, and design.
-                </p>
-            </div>
-
-            {/* The Project Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 border-t border-gray-100 pt-10">
-
-                {/* Project Card 1 */}
-                <div className="group space-y-4 cursor-pointer">
-                    <div className="aspect-4/3 bg-gray-100 rounded-xl overflow-hidden relative border border-gray-100">
-                        {/* Placeholder for Image */}
-                        <div className="w-full h-full bg-gray-100 group-hover:bg-gray-200 transition-colors flex items-center justify-center text-gray-400">
-                            Project Image
-                        </div>
-                    </div>
-                    <div className="flex justify-between items-start">
-                        <div>
-                            <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">E-Commerce Dashboard</h3>
-                            <p className="text-gray-500 text-sm mt-1">Next.js • Tailwind • Stripe</p>
-                        </div>
-                        <ArrowUpRight size={18} className="text-gray-400 group-hover:text-blue-600 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                    </div>
+                    <h1 className="font-geist text-4xl font-bold tracking-tight mb-4">
+                        The Archive
+                    </h1>
+                    <p className="text-gray-600 dark:text-gray-400 text-lg">
+                        A complete collection of my engineering notes, case studies, and architectural patterns.
+                    </p>
                 </div>
 
-                {/* Project Card 2 */}
-                <div className="group space-y-4 cursor-pointer">
-                    <div className="aspect-4/3 bg-gray-100 rounded-xl overflow-hidden relative border border-gray-100">
-                        <div className="w-full h-full bg-gray-100 group-hover:bg-gray-200 transition-colors flex items-center justify-center text-gray-400">
-                            Project Image
-                        </div>
-                    </div>
-                    <div className="flex justify-between items-start">
-                        <div>
-                            <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">AI Chat Interface</h3>
-                            <p className="text-gray-500 text-sm mt-1">React • OpenAI API</p>
-                        </div>
-                        <ArrowUpRight size={18} className="text-gray-400 group-hover:text-blue-600 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                    </div>
-                </div>
-
-                {/* Project Card 3 (Example of adding more) */}
-                <div className="group space-y-4 cursor-pointer">
-                    <div className="aspect-4/3 bg-gray-100 rounded-xl overflow-hidden relative border border-gray-100">
-                        <div className="w-full h-full bg-gray-100 group-hover:bg-gray-200 transition-colors flex items-center justify-center text-gray-400">
-                            Project Image
-                        </div>
-                    </div>
-                    <div className="flex justify-between items-start">
-                        <div>
-                            <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Finance Tracker</h3>
-                            <p className="text-gray-500 text-sm mt-1">Mobile App • Swift</p>
-                        </div>
-                        <ArrowUpRight size={18} className="text-gray-400 group-hover:text-blue-600 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                    </div>
+                {/* The Full Grid */}
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                    {works.map((work) => (
+                        <PortfolioCard
+                            key={work.slug}
+                            title={work.title}
+                            category={work.category}
+                            description={work.description}
+                            meta={work.tags.slice(0, 3).join(" • ")}
+                            href={`/work/${work.slug}`}
+                            icon={getIconForCategory(work.category)}
+                        />
+                    ))}
                 </div>
 
             </div>
         </div>
-    )
+    );
 }

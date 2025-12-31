@@ -1,60 +1,29 @@
-import { Github, Linkedin, Mail } from 'lucide-react'
-import Link from 'next/link'
+import FeaturedWork from "./components/FeaturedWork";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import HeroSection from "./components/HeroSection";
+import NowStream from "./components/NowStream";
+
 
 export default function Home() {
   return (
-    <div className="space-y-24 md:space-y-32">
+    <div className="min-h-screen bg-white text-black dark:bg-black dark:text-white">
+      <Header />
 
-      {/* --- HERO SECTION --- */}
-      <section className="space-y-8 animate-fade-in">
-        <nav className="flex justify-between items-center text-sm font-medium text-gray-500 mb-16">
-          <span className="text-gray-900 font-bold">JL Dev.</span>
-          <div className="flex gap-6">
-            {/* UPDATED LINK: Now points to /work instead of #work */}
-            <Link href="/work" className="hover:text-black transition-colors">Work</Link>
-            <Link href="/blog" className="hover:text-black transition-colors">Writing</Link>
-            <Link href="/experience" className="hover:text-black transition-colors">Experience</Link>
-          </div>
-        </nav>
+      <main className="space-y-12">
+        <HeroSection />
 
-        <div className="max-w-2xl space-y-6">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-gray-900">
-            Software Engineer building accessible digital products.
-          </h1>
-          <p className="text-lg text-gray-600 leading-relaxed max-w-lg">
-            I specialize in React, Next.js, and TypeScript. Currently focused on building performant web applications with clean, gallery-like aesthetics.
-          </p>
-
-          <div className="flex gap-4 pt-2">
-            <a
-              href="https://github.com/jl681"
-              target="_blank"
-              className="flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-all text-sm font-medium"
-            >
-              <Github size={18} />
-              GitHub
-            </a>
-            <a
-              href="https://www.linkedin.com/in/jing-li-9a74652a7/"
-              target="_blank"
-              className="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-lg hover:border-gray-400 transition-all text-sm font-medium"
-            >
-              <Linkedin size={18} />
-              LinkedIn
-            </a>
-          </div>
+        <div id="now-stream" className="scroll-mt-28">
+          <NowStream />
         </div>
-      </section>
 
-      {/* --- FOOTER --- */}
-      <footer className="pt-10 pb-10 text-sm text-gray-400 flex justify-between items-center">
-        <p>© 2024 JL. All rights reserved.</p>
-        <a href="mailto:jljanice23@gmail.com" className="flex items-center gap-2 hover:text-gray-900 transition-colors">
-          <Mail size={16} />
-          Get in touch
-        </a>
-      </footer>
+        <div id="featured-work" className="scroll-mt-28">
+          <FeaturedWork />
+        </div>
+      </main>
+
+      <Footer />
 
     </div>
-  )
+  );
 }
