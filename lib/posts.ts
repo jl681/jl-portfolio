@@ -84,7 +84,9 @@ export function getNowStream() {
         };
     });
 
-    return logs.sort((a, b) => (new Date(a.date).getTime() > new Date(b.date).getTime() ? -1 : 1));
+    return logs.sort((a, b) => {
+        return new Date(b.date).getTime() - new Date(a.date).getTime();
+    });
 }
 
 
